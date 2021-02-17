@@ -19,10 +19,15 @@ urlpatterns = [
     # Your stuff: custom urls includes go here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+api_urlpatterns = [
+    path("currencies/", include("currencies.urls", namespace="currencies")),
+]
+
 # API URLS
 urlpatterns += [
     # API base url
     path("api/", include("config.api_router")),
+    path("api/", include(api_urlpatterns)),
     # DRF auth token
     path("auth-token/", obtain_auth_token),
 ]

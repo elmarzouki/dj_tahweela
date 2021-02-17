@@ -112,6 +112,23 @@ $ docker-compose -f local.yml up
 
 $ docker-compose -f local.yml run django python manage.py makemigrations
 $ docker-compose -f local.yml run django python manage.py migrate
+$ firefox http://localhost:8000/
 ```
-If you need a django shell: `docker-compose -f local.yml run --rm django python manage.py shell_plus `
-To check the logs out: `docker-compose -f local.yml logs`
+Django shell: `docker-compose -f local.yml run --rm django python manage.py shell_plus `
+Logs: `docker-compose -f local.yml logs`
+Unittests: `$ docker-compose -f local.yml run django python manage.py test`
+
+
+API
+^^^
+Please, Check Postman collection. But for quick examples:
+1. POST http://localhost:8000/auth-token/
+   body```json  {"username": "elmarzouki", "password": "elmarzouki"}```
+   response {"token": "32b48b9816a0ea7d12c32af9b6153210cc8c17c7"}
+
+2. GET http://localhost:8000/api/users/me/
+   headers Authorization = TOKEN 32b48b9816a0ea7d12c32af9b6153210cc8c17c7
+   response logged user data
+
+3. GET http://localhost:8000/api/currencies/status/
+   response {"Status": "Currencies App Up!"}
