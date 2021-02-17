@@ -60,3 +60,14 @@ INSTALLED_APPS += ["django_extensions"]  # noqa F405
 CELERY_TASK_EAGER_PROPAGATES = True
 # Your stuff...
 # ------------------------------------------------------------------------------
+ALPHAVANTAGE_API_KEY=env("ALPHAVANTAGE_API_KEY")
+INTRADAY="INTRADAY"
+DAILY="DAILY"
+WEEKLY="WEEKLY"
+MONTHLY="MONTHLY"
+ALLOWED_FUNCTIONS = [
+    (INTRADAY, "Intraday"),
+    (DAILY, "Daily"),
+    (WEEKLY, "Weekly"),
+    (MONTHLY, "Monthly"),
+]

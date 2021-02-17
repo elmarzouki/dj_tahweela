@@ -105,6 +105,7 @@ See detailed `cookiecutter-django Docker documentation`_.
 
 Run & go
 --------
+PLEASE NOTE: I kept the .env/* and credentials as plain for easier reviewing.
 Build and Run the app using docker.
 ```bash
 $ docker-compose -f local.yml build
