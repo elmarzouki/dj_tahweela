@@ -6,7 +6,7 @@ from dj_tahweela.currencies.serializers import ExchangeRateSerializer, HistorySe
 from dj_tahweela.currencies.converter import get_realtime_exchange_rate
 from dj_tahweela.currencies.models import History, User
 
-class ServerStatusView(APIView):
+class AppStatusView(APIView):
     def get(self, request):
         return Response({'Status': 'Currencies App Up!'})
 
