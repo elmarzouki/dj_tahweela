@@ -44,7 +44,7 @@ def get_time_series_exchange_rate(from_currency, to_currency, req_type, interval
 	url = f"{url}&interval={interval}" if req_type == settings.INTRADAY else url # add interval on fx(INTRADAY) only
 	url = f"{url}&apikey={API_KEY}" # add API_KEY
 	request = requests.get(url)
-	return request.json()
+	return request.json() # TODO:// clean the comming response from alphavantage.co
 
 
 if __name__ == "__main__" : 

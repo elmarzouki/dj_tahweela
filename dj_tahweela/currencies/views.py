@@ -41,7 +41,6 @@ class ExchangeRateView(APIView):
         return Response(history_serializer.data)
 
 
-# TODO:// clean the API of this wrapper and add test cases
 class ExchangeRateTimeSeriesView(APIView):
     renderer_classes = [
         JSONRenderer,
