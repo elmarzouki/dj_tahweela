@@ -77,6 +77,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "dj_tahweela.users.apps.UsersConfig",
     # Your stuff: custom apps go here
+    "dj_tahweela.currencies.apps.CurrenciesConfig",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
