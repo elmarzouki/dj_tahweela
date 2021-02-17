@@ -61,11 +61,13 @@ CELERY_TASK_EAGER_PROPAGATES = True
 # Your stuff...
 # ------------------------------------------------------------------------------
 ALPHAVANTAGE_API_KEY=env("ALPHAVANTAGE_API_KEY")
+CURRENCY_EXCHANGE_RATE="CURRENCY_EXCHANGE_RATE"
 INTRADAY="INTRADAY"
 DAILY="DAILY"
 WEEKLY="WEEKLY"
 MONTHLY="MONTHLY"
 ALLOWED_FUNCTIONS = [
+    (CURRENCY_EXCHANGE_RATE, "Currency exchange rate"),
     (INTRADAY, "Intraday"),
     (DAILY, "Daily"),
     (WEEKLY, "Weekly"),

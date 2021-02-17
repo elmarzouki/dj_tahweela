@@ -133,3 +133,7 @@ Please, Check Postman collection. But for quick examples:
 
 3. GET http://localhost:8000/api/currencies/status/
    response {"Status": "Currencies App Up!"}
+
+4. POST http://localhost:8000/api/currencies/exchange_rate/
+   body: {"from_currency": "USD","to_currency": "EGP","user_id": 1}
+   response history recored including exchange_rate and refreshed_at

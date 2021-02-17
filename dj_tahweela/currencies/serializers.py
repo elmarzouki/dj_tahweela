@@ -1,8 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from dj_tahweela.currencies.validators import validate_currency
-
-User = get_user_model()  # django auth.user
+from dj_tahweela.currencies.models import History, User
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -27,3 +26,17 @@ class ExchangeRateSerializer(serializers.Serializer):
         validate_currency(from_currency)
         validate_currency(to_currency)
         return data
+
+
+class HistorySerializer(serializers.ModelSerializer):
+    user = UserSerializer()
+    class Meta:
+        model = History
+        fields = (
+            "function_used",
+            "from_currency",
+            "to_currency",
+            "exchange_rate",
+            "refreshed_at",
+            "user",
+        )
