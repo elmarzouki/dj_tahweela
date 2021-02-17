@@ -103,3 +103,15 @@ See detailed `cookiecutter-django Docker documentation`_.
 
 
 
+Run & go
+--------
+Build and Run the app using docker.
+```bash
+$ docker-compose -f local.yml build
+$ docker-compose -f local.yml up
+
+$ docker-compose -f local.yml run django python manage.py makemigrations
+$ docker-compose -f local.yml run django python manage.py migrate
+```
+If you need a django shell: `docker-compose -f local.yml run --rm django python manage.py shell_plus `
+To check the logs out: `docker-compose -f local.yml logs`
