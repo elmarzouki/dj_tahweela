@@ -113,6 +113,7 @@ $ docker-compose -f local.yml up
 
 $ docker-compose -f local.yml run django python manage.py makemigrations
 $ docker-compose -f local.yml run django python manage.py migrate
+$ docker-compose -f local.yml run django python manage.py createsuperuser
 $ firefox http://localhost:8000/
 ```
 Django shell: `docker-compose -f local.yml run --rm django python manage.py shell_plus `
@@ -124,7 +125,7 @@ API
 ^^^
 Please, Check Postman collection. But for quick examples:
 1. POST http://localhost:8000/auth-token/
-   body```json  {"username": "elmarzouki", "password": "elmarzouki"}```
+   body {"username": "elmarzouki", "password": "elmarzouki"}
    response {"token": "32b48b9816a0ea7d12c32af9b6153210cc8c17c7"}
 
 2. GET http://localhost:8000/api/users/me/
@@ -137,3 +138,7 @@ Please, Check Postman collection. But for quick examples:
 4. POST http://localhost:8000/api/currencies/exchange_rate/
    body: {"from_currency": "USD","to_currency": "EGP","user_id": 1}
    response history recored including exchange_rate and refreshed_at
+
+5. POST http://localhost:8000/api/currencies/exchange_rate_time_series/
+   body {"from_currency": "USD", "to_currency": "EGP", "req_type" :"FX_INTRADAY"}
+   response exchange rate time series

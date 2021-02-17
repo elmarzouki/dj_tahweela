@@ -2,8 +2,8 @@ from django.conf import settings
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer
-from dj_tahweela.currencies.serializers import ExchangeRateSerializer, HistorySerializer
-from dj_tahweela.currencies.converter import get_realtime_exchange_rate
+from dj_tahweela.currencies.serializers import ExchangeRateSerializer, HistorySerializer, ExchangeRateTimeSeriesSerializer
+from dj_tahweela.currencies.converter import get_realtime_exchange_rate, get_time_series_exchange_rate
 from dj_tahweela.currencies.models import History, User
 
 class AppStatusView(APIView):
@@ -39,3 +39,22 @@ class ExchangeRateView(APIView):
         )
         history_serializer = HistorySerializer(history)
         return Response(history_serializer.data)
+
+
+# TODO:// clean the API of this wrapper and add test cases
+class ExchangeRateTimeSeriesView(APIView):
+    renderer_classes = [
+        JSONRenderer,
+    ]
+
+    def post(self, request, *args, **kwargs):
+        # serialization
+        serializer = ExchangeRateTimeSeriesSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        # get req data
+        from_currency = serializer.validated_data.get("from_currency")
+        to_currency = serializer.validated_data.get("to_currency")
+        req_type = serializer.validated_data.get("req_type")
+
+        data = get_time_series_exchange_rate(from_currency, to_currency, req_type)
+        return Response(data)
