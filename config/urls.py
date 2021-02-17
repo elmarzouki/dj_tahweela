@@ -20,7 +20,7 @@ urlpatterns = [
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 api_urlpatterns = [
-    path("currencies/", include("currencies.urls", namespace="currencies")),
+    path("currencies/", include("dj_tahweela.currencies.urls", namespace="currencies")),
 ]
 
 # API URLS
