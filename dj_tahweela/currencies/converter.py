@@ -7,9 +7,15 @@ EXCHANGE_RATE = "5. Exchange Rate"
 DATE = "6. Last Refreshed"
 
 def get_physical_currnencies():
+	"""
+	:prams
+	:return currencies_codes, currencies_description
+	"""
 	url = "https://www.alphavantage.co/physical_currency_list/"
 	request = requests.get(url)
-	return request.content.decode("UTF-8").split('\r\n')
+	currencies = request.content.decode("UTF-8").split('\r\n')
+	codes = [x.split(",")[0] for x in currencies if len (x.split(",")[0])<5 and len(x.split(",")[0])>2]
+	return codes, currencies 
 
 def get_realtime_exchange_rate(from_currency, to_currency) : 
 	"""
